@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outbound Freight Performance Dashboard</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+<div class="pf">
+  <header id="header">
+    <p class="pf-eyebrow">Portfolio project · Logistics &amp; Transportation</p>
+    <h1 class="pf-title">Outbound Freight Performance — Tulsa DC</h1>
+    <div class="pf-meta"><span class="pf-tag">Sample data</span><span>12 months: Nov 2025 – Oct 2026</span><span>5 carriers · 10 lanes · 40-truck fleet</span></div>
+    <p class="pf-lede" id="takeaway" data-read lang="en">In <b data-draw="win" data-source="kpis" data-field="window" data-row="0">—</b>, on-time delivery reached <b data-draw="otd" data-source="kpis" data-field="on_time_pct" data-row="0">—</b>, <span data-draw="otdvs">—</span> the 95% target, while freight spend per mile held at <b data-draw="cpm" data-source="kpis" data-field="cost_per_mile" data-row="0">—</b>. The carrier scorecard shows which partners drive late deliveries.</p>
+  </header>
+
+  <section class="pf-kpis" id="kpis" aria-label="Key figures, Aug–Oct 2026 vs May–Jul 2026">
+    <div class="pf-card" id="kpi-shipments"><p class="pf-kpi-label">Shipments · last 3 months</p><p class="pf-kpi-val" data-draw="k_ship" data-source="kpis" data-field="shipments" data-row="0">—</p><p class="pf-kpi-foot"><span data-draw="c_ship" data-source="kpis" data-field="shipments_chg_pct" data-row="0">—</span><span>vs prior 3 months</span></p></div>
+    <div class="pf-card" id="kpi-otd"><p class="pf-kpi-label">On-time delivery</p><p class="pf-kpi-val" data-draw="k_otd" data-source="kpis" data-field="on_time_pct" data-row="0">—</p><p class="pf-kpi-foot"><span data-draw="c_otd" data-source="kpis" data-field="on_time_chg_pts" data-row="0">—</span><span>vs prior 3 months</span></p></div>
+    <div class="pf-card" id="kpi-cpm"><p class="pf-kpi-label">Freight cost per mile</p><p class="pf-kpi-val" data-draw="k_cpm" data-source="kpis" data-field="cost_per_mile" data-row="0">—</p><p class="pf-kpi-foot"><span data-draw="c_cpm" data-source="kpis" data-field="cost_per_mile_chg_pct" data-row="0">—</span><span>vs prior 3 months</span></p></div>
+    <div class="pf-card" id="kpi-spend"><p class="pf-kpi-label">Freight spend</p><p class="pf-kpi-val" data-draw="k_spend" data-source="kpis" data-field="freight_cost" data-row="0">—</p><p class="pf-kpi-foot"><span data-draw="c_spend" data-source="kpis" data-field="freight_cost_chg_pct" data-row="0">—</span><span>vs prior 3 months</span></p></div>
+    <div class="pf-card" id="kpi-util"><p class="pf-kpi-label">Fleet utilization</p><p class="pf-kpi-val" data-draw="k_util" data-source="kpis" data-field="fleet_utilization" data-row="0">—</p><p class="pf-kpi-foot"><span data-draw="c_util" data-source="kpis" data-field="fleet_utilization_chg_pts" data-row="0">—</span><span>vs prior 3 months</span></p></div>
+    <div class="pf-card" id="kpi-transit"><p class="pf-kpi-label">Avg transit time (days)</p><p class="pf-kpi-val" data-draw="k_tr" data-source="kpis" data-field="avg_transit_days" data-row="0">—</p><p class="pf-kpi-foot"><span data-draw="c_tr" data-source="kpis" data-field="avg_transit_chg" data-row="0">—</span><span>vs prior 3 months</span></p></div>
+  </section>
+
+  <div class="pf-grid">
+    <section class="pf-card" id="otd-trend">
+      <h2 class="pf-h">On-time delivery by month</h2>
+      <p class="pf-sub">Share of shipments delivered on or before the promised date</p>
+      <div class="pf-chart" data-draw="otdChart" data-source="monthly"></div>
+    </section>
+    <section class="pf-card" id="volume">
+      <h2 class="pf-h">Shipment volume by month</h2>
+      <p class="pf-sub">Outbound loads tendered from the Tulsa DC; peaks in Q4</p>
+      <div class="pf-chart" data-draw="volChart" data-source="monthly"></div>
+    </section>
+  </div>
+
+  <div class="pf-grid">
+    <section class="pf-card" id="carriers">
+      <h2 class="pf-h">Carrier scorecard: on-time %</h2>
+      <p class="pf-sub">Last 12 months · bars below the 95% target are highlighted</p>
+      <div class="pf-chart pf-short" data-draw="carrierChart" data-source="carriers"></div>
+    </section>
+    <section class="pf-card" id="modes">
+      <h2 class="pf-h">Cost per mile by mode</h2>
+      <p class="pf-sub">Last 12 months · hover a bar for volume and spend</p>
+      <div class="pf-chart pf-short" data-draw="modeChart" data-source="modes"></div>
+    </section>
+  </div>
+
+  <section class="pf-card" id="fleet" style="margin-bottom: var(--cds-gap-md)">
+    <h2 class="pf-h">Fleet utilization and cost per mile</h2>
+    <p class="pf-sub">Private fleet utilization (% of available hours) against freight cost per mile</p>
+    <div class="pf-grid" style="margin:0">
+      <div class="pf-chart" data-draw="utilChart" data-source="monthly"></div>
+      <div class="pf-chart" data-draw="cpmChart" data-source="monthly"></div>
+    </div>
+  </section>
+
+  <section class="pf-card" id="lanes">
+    <h2 class="pf-h">Lane performance</h2>
+    <p class="pf-sub">Last 12 months, sorted by shipment volume</p>
+    <div class="pf-tablewrap">
+      <table class="pf-table" data-source="lanes" data-row-key="lane">
+        <thead><tr><th data-field="lane">Lane</th><th class="num" data-field="miles">Miles</th><th class="num" data-field="shipments">Shipments</th><th class="num" data-field="freight_cost">Freight spend</th><th class="num" data-field="on_time_pct">On-time</th><th class="num" data-field="avg_transit_days">Avg transit (days)</th></tr></thead>
+        <tbody data-draw="laneRows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <details class="pf-about" id="about">
+    <summary>About this dashboard: data, metrics and method</summary>
+    <dl>
+      <dt>Business question</dt><dd>Are we delivering on time at a reasonable cost, and which carriers and lanes need attention?</dd>
+      <dt>Data</dt><dd>~7,600 synthetic shipment records and 480 truck-month fleet records modeled on a regional distributor shipping from Tulsa, OK. Created for this portfolio; not company data.</dd>
+      <dt>On-time delivery</dt><dd>Shipments delivered on or before the committed date ÷ all shipments.</dd>
+      <dt>Cost per mile</dt><dd>Total freight cost ÷ total loaded miles (includes LTL accessorials).</dd>
+      <dt>Fleet utilization</dt><dd>Average share of available truck hours in use across the 40-truck private fleet.</dd>
+      <dt>Comparison</dt><dd>Headline figures compare Aug–Oct 2026 with May–Jul 2026.</dd>
+      <dt>Method</dt><dd>Python (pandas) to clean and aggregate; KPI logic mirrors SQL group-bys; visualized with D3.</dd>
+    </dl>
+    <p>Recommended actions from this view: put Cimarron Transport and Summit Carriers on a 90-day performance plan, shift long-haul Denver and Chicago freight toward intermodal where transit windows allow, and consolidate LTL into FTL on the Dallas and Kansas City lanes.</p>
+  </details>
+  <p class="pf-foot">Portfolio project built with Python (pandas) and D3.js · All data is synthetic. Source code and data are in this repository.</p>
+</div>
+<script src="d3.min.js"></script>
+<script src="data.js"></script>
+<script src="dash-lite.js"></script>
+<script src="charts.js"></script>
+<script>
+  const f = DC.f;
+  dash.draw('win', DC.cell('kpis', 'window', (v) => v));
+  dash.draw('otd', DC.cell('kpis', 'on_time_pct', f.pct1));
+  dash.draw('cpm', DC.cell('kpis', 'cost_per_mile', f.usd2));
+  dash.draw('otdvs', (el) => {
+    const r = dash.data('kpis');
+    if (r.status !== 'ok' || !r.data.length) { el.textContent = '—'; return; }
+    const gap = +r.data[0].on_time_pct - +r.data[0].otd_target;
+    el.textContent = gap >= 0 ? 'meeting' : gap > -2 ? 'just short of' : 'below';
+  });
+  dash.draw('k_ship', DC.cell('kpis', 'shipments', f.int));
+  dash.draw('c_ship', DC.chip('kpis', 'shipments_chg_pct', f.sPct, true));
+  dash.draw('k_otd', DC.cell('kpis', 'on_time_pct', f.pct1));
+  dash.draw('c_otd', DC.chip('kpis', 'on_time_chg_pts', f.sPts, true));
+  dash.draw('k_cpm', DC.cell('kpis', 'cost_per_mile', f.usd2));
+  dash.draw('c_cpm', DC.chip('kpis', 'cost_per_mile_chg_pct', f.sPct, false));
+  dash.draw('k_spend', DC.cell('kpis', 'freight_cost', f.usd));
+  dash.draw('c_spend', DC.chip('kpis', 'freight_cost_chg_pct', f.sPct, false));
+  dash.draw('k_util', DC.cell('kpis', 'fleet_utilization', f.pct1));
+  dash.draw('c_util', DC.chip('kpis', 'fleet_utilization_chg_pts', f.sPts, true));
+  dash.draw('k_tr', DC.cell('kpis', 'avg_transit_days', f.num('.2f')));
+  dash.draw('c_tr', DC.chip('kpis', 'avg_transit_chg', f.sNum('.2f'), false));
+
+  dash.draw('otdChart', (el) => {
+    const rows = DC.rowsOf('monthly', el); if (!rows) return;
+    DC.line(el, rows, { x: 'month', series: [{ field: 'on_time_pct', label: 'On-time %' }], fmt: f.pct0, ref: { value: 95, label: '95% target' }, aria: 'Line chart of monthly on-time delivery percentage against a 95% target, Nov 2025 to Oct 2026' });
+  });
+  dash.draw('volChart', (el) => {
+    const rows = DC.rowsOf('monthly', el); if (!rows) return;
+    DC.bars(el, rows, { x: 'month', y: 'shipments', fmt: f.int, label: 'Shipments', aria: 'Bar chart of monthly shipment counts, Nov 2025 to Oct 2026' });
+  });
+  dash.draw('carrierChart', (el) => {
+    const rows = DC.rowsOf('carriers', el); if (!rows) return;
+    DC.hbar(el, rows, { label: 'carrier', value: 'on_time_pct', valueLabel: 'On-time', fmt: f.pct1, domainMin: 80, ref: { value: 95, label: '95% target' }, critBelow: true,
+      extra: [{ field: 'shipments', label: 'Shipments', fmt: f.int }, { field: 'cost_per_mile', label: 'Cost/mile', fmt: f.usd2 }, { field: 'damage_rate', label: 'Damage rate', fmt: (v) => f.pct1(v) }, { field: 'avg_days_late', label: 'Avg days late (when late)', fmt: f.num('.1f') }],
+      aria: 'Horizontal bar chart of on-time percentage by carrier, with a 95% target line' });
+  });
+  dash.draw('modeChart', (el) => {
+    const rows = DC.rowsOf('modes', el); if (!rows) return;
+    DC.hbar(el, rows, { label: 'mode', value: 'cost_per_mile', valueLabel: 'Cost per mile', fmt: f.usd2, colorIndex: 1,
+      extra: [{ field: 'shipments', label: 'Shipments', fmt: f.int }, { field: 'share_pct', label: 'Share of shipments', fmt: f.pct1 }, { field: 'freight_cost', label: 'Spend', fmt: f.usd }],
+      aria: 'Horizontal bar chart of freight cost per mile by shipping mode' });
+  });
+  dash.draw('utilChart', (el) => {
+    const rows = DC.rowsOf('monthly', el); if (!rows) return;
+    DC.line(el, rows, { x: 'month', series: [{ field: 'fleet_utilization', label: 'Fleet utilization' }], fmt: f.pct0, showLegend: true, height: 210, aria: 'Line chart of monthly fleet utilization percentage' });
+  });
+  dash.draw('cpmChart', (el) => {
+    const rows = DC.rowsOf('monthly', el); if (!rows) return;
+    DC.line(el, rows, { x: 'month', series: [{ field: 'cost_per_mile', label: 'Cost per mile', color: (dash.colors || [])[1] }], fmt: f.usd2, showLegend: true, height: 210, aria: 'Line chart of monthly freight cost per mile' });
+  });
+  dash.draw('laneRows', DC.tbody('lanes', [
+    { field: 'lane' }, { field: 'miles', fmt: f.int, num: true }, { field: 'shipments', fmt: f.int, num: true },
+    { field: 'freight_cost', fmt: f.usd, num: true }, { field: 'on_time_pct', fmt: f.pct1, num: true }, { field: 'avg_transit_days', fmt: f.num('.1f'), num: true }
+  ]));
+</script>
+
+</main>
+</body>
+</html>

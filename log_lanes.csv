@@ -1,0 +1,11 @@
+lane,miles,shipments,freight_cost,on_time_pct,avg_transit_days
+"Tulsa → Dallas, TX",257,1290,1153887,92.2,1.3
+"Tulsa → Oklahoma City, OK",106,1103,464513,91.3,1.2
+"Tulsa → Kansas City, MO",248,988,861132,90.2,1.3
+"Tulsa → Houston, TX",490,893,1300210,90.4,1.9
+"Tulsa → St. Louis, MO",395,726,867366,92.7,1.6
+"Tulsa → Memphis, TN",400,700,835954,93.4,1.6
+"Tulsa → Wichita, KS",175,621,394829,91.9,1.2
+"Tulsa → Little Rock, AR",275,508,489555,93.9,1.3
+"Tulsa → Denver, CO",680,421,826628,89.3,2.3
+"Tulsa → Chicago, IL",690,397,783181,88.2,2.3

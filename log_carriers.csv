@@ -1,0 +1,6 @@
+carrier,shipments,on_time_pct,cost_per_mile,damage_rate,avg_days_late
+Red River Freight,1509,96.09,3.18,1.06,2.1
+Heartland Express Co.,1550,94.84,3.2,1.55,1.85
+Prairie Line Logistics,1588,92.0,3.16,1.07,2.06
+Summit Carriers,1473,87.92,3.2,1.36,2.0
+Cimarron Transport,1527,86.44,3.18,1.83,1.89

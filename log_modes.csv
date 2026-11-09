@@ -1,0 +1,4 @@
+mode,shipments,freight_cost,cost_per_mile,share_pct
+FTL,3666,3040077,2.47,47.94
+LTL,3574,4561451,4.24,46.74
+Intermodal,407,375726,1.86,5.32
